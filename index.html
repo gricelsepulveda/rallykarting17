@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title>RallyKarting - ¡Vive la experiencia karting!</title><!--BUSCADORES-->
+		<meta name="description" content="Ven a disfrutar de nuestras pistas karting, trae a tu empresa o familia y vive la gran experiencia del rally karting.">
+		<meta name="keywords" content="karting, rally, carreras, panoramas, chile">
+		<meta name="author" content="Gricel Sepúlveda, Rodrigo Navarrete, Mug Digital">
+		<meta name="viewport" content="width=device-width, initial-scale=1"><!--AUX RESPONSIVO-->
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<link rel="stylesheet" href="css/bootstrap.min.css"><!--ESTILOS BOOTSTRAP-->
+		<link rel="stylesheet" href="css/jasny-bootstrap.css"><!--ESTILOS BOOTSTRAP-->
+		<link rel="stylesheet" href="css/styles.css"><!--ESTILOS DEL SITIO-->
+		<link rel="stylesheet" href="css/font-awesome.min.css"><!--FONT AWESOME-->
+		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/><!--FAVICON-->
+        <script src="js/jquery.min.js"></script><!--JQUERY JS-->
+		<script src="js/jasny-bootstrap.min.js"></script><!--JASNY BOOTSTRAP JS-->
+		<script src="js/angular.js" type="text/javascript"></script><!--ANGULAR-->
+		<script src="js/angular-route.js" type="text/javascript"></script><!--ANGULAR-->
+		<script src="js/app/app.js" type="text/javascript"></script><!--ANGULAR-->
+		<script src="js/app/controlador/controlador.js" type="text/javascript"></script><!--ANGULAR-->
+		<script src="js/app/directive.js" type="text/javascript"></script><!--ANGULAR-->
+		<script src="js/app/service.js" type="text/javascript"></script><!--ANGULAR-->
+		<script src="js/app/jasny-bootstrap.js" type="text/javascript"></script><!--ANGULAR-->
+	</head>
+	<!--BOTON PROBLEMAS-->
+	<figure id="trabaja">
+		trabaja con nosotros
+	</figure>
+	<figure id="registrate">
+		Registrate
+	</figure>
+	<figure class="problemas_boton">
+		<img src="img/kart.svg" class="kart_icono hidden-sm hidden-xs">
+		<span>¿Problemas?</span>
+		<p class="hidden-sm hidden-xs">Danos tu opinión</p>
+		<img src="img/personal.svg" class="personal_icono hidden-sm hidden-xs">
+	</figure>
+	<a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeRcITt5GhQDHzosyfP8cWN0q9pTbsvHIvAKAo8e2GJ7asNEg/viewform?embedded=true">
+		<figure class="boton_encuesta">
+			<i class="fa fa-commenting" aria-hidden="true"></i>
+			<span>Encuesta 2017</span>
+			<p>Contestar acá</p>
+		</figure>
+	</a>
+	<div class="fondo_negro">
+		<section class="contenedor_problemas">
+			<i class="fa fa-times cerrar_problemas"></i>
+			<h1>Danos tu opinión</h1>
+			<p>
+				Nos importa seguir mejorando tus experiencias es por eso que si has tenido alguna incidencia en tu visita a Rallykarting agradeceríamos tu reporte en esta sección.
+			</p>
+			<figure class="abrir_formulario_personal">
+				<img src="img/kart.svg">
+				<span>Problema con el personal</span>
+			</figure>
+			<figure class="abrir_formulario_kart">
+				<img src="img/personal.svg">
+				<span>Problema con el kart</span>
+			</figure>
+		</section>
+		<!--FORMULARIO PROBLEMAS CON EL KART-->
+		<section class="contenedor_formulario_problemas_kart" ng-controller="controlador">
+			<i class="fa fa-times cerrar_problemas"></i>
+			<h1>
+				<img src="img/personal.svg">
+				Kart - Danos tu opinión
+			</h1>
+			<p>
+				Nos importa seguir mejorando tus experiencias es por eso que si has tenido alguna incidencia en tu visita a Rallykarting agradeceríamos tu reporte en esta sección.
+			</p>
+			<form>
+				<input type="text" ng-model="nombre_kar" placeholder="Ingrese su nombre">
+				<input type="text" ng-model="email_kar" placeholder="Proporcione su email o teléfono">
+				<select ng-model="sede_kar">
+					<option selected disabled value="">Escojer sede</option>
+					<option value="2">Antofagasta</option>
+					<option value="3">La Serena</option>
+					<option value="11">Curico</option>
+					<option value="4">Viña del Mar</option>
+					<option value="9">Lo Barnechea</option>
+					<option value="10">La Florida</option>
+					<option value="6">Santiago Oeste</option>
+					<option value="5">Santiago Sur</option>
+					<option value="1">Concepción centro</option>
+					<option value="7">Concepción trebol</option>
+					<option value="8">Pto. Montt</option>
+
+				</select>
+				<input type="phone" ng-model="auto_kar" placeholder="Indique nº del auto">
+				<textarea rows="5" ng-model="mensaje_kar" placeholder="Su problema..."></textarea>
+                <span class="cerrar_formulario" ng-click="pkar()">enviar</span>
+                <span class="volver_formulario">volver</span>
+			</form>
+		</section>
+		<!--FORMULARIO PROBLEMAS CON EL PERSONAL-->
+		<section class="contenedor_formulario_problemas_personal" ng-controller="controlador">
+			<i class="fa fa-times cerrar_problemas"></i>
+			<h1>
+				<img src="img/kart.svg">
+				Personal - Danos tu opinión
+			</h1>
+			<p>
+				Nos importa seguir mejorando tus experiencias es por eso que si has tenido alguna incidencia en tu visita a Rallykarting agradeceríamos tu reporte en esta sección.
+			</p>
+			<form>
+				<input type="text" ng-model="nombre_per" placeholder="Ingrese su nombre">
+				<input type="text" ng-model="email_per" placeholder="Proporcione su email o teléfono">
+				<select ng-model="sede_per">
+					<option selected disabled value="">Escojer sede</option>
+					<option value="2">Antofagasta</option>
+					<option value="3">La Serena</option>
+					<option value="11">Curico</option>
+					<option value="4">Viña del Mar</option>
+					<option value="9">Lo Barnechea</option>
+					<option value="10">La Florida</option>
+					<option value="6">Santiago Oeste</option>
+					<option value="5">Santiago Sur</option>
+					<option value="1">Concepción centro</option>
+					<option value="7">Concepción trebol</option>
+					<option value="8">Pto. Montt</option>
+				</select>
+				<input type="phone" ng-model="personal_per" placeholder="Nombre del funcionario">
+				<textarea rows="5" ng-model="mensaje_per" placeholder="Su problema..."></textarea>
+				<span class="cerrar_formulario" ng-click="pper()">enviar</span>
+				<span class="volver_formulario">volver</span>
+			</form>
+		</section>
+		<!--FORMULARIO PROBLEMAS CON EL KART-->
+		<section class="contenedor_formulario_trabaja_con_nosotros" ng-controller="controlador">
+			<i class="fa fa-times cerrar_problemas"></i>
+			<h1>
+				<img src="img/trabajando.svg">
+				Trabaja con nosotros
+			</h1>
+			<p>
+				¿Te gustaría ser parte del equipo de rallykarting? Completa el siguiente formulario y evaluaremos tu postulación.
+			</p>
+			<form name="upload">
+				<select ng-model="tipo">
+					<option selected disabled value="">Estás buscando:</option>
+					<option value="Práctica laboral">Práctica laboral</option>
+					<option value="Trabajo normal">Trabajo normal</option>
+				</select>
+				<select ng-model="car">
+					<option selected disabled value="">Cargo:</option>
+					<option value="Promotora">Promotora</option><!--EMAIL A sede y cc r@rallykarting.cl y p@rallykarting.cl-->
+					<option value="Cajero">Cajero</option><!--EMAIL A sede y cc r@rallykarting.cl y p@rallykarting.cl-->
+					<option value="Pistero">Pistero</option><!--EMAIL A sede y cc r@rallykarting.cl y p@rallykarting.cl-->
+					<option value="Mecánico">Mecánico</option><!--EMAIL A sede y cc r@rallykarting.cl y p@rallykarting.cl-->
+					<option value="Administrador">Administrador</option><!--EMAIL solo a r@rallykarting y cc a p@rallykarting.cl-->
+					<option value="Subadministrador">Subadministrador</option><!--EMAIL solo a r@rallykarting y cc a p@rallykarting.cl-->
+				</select>
+				<select ng-model="disp">
+					<option selected disabled value="">Disponibilidad:</option>
+					<option value="Part time (Sab-Dom)">Part time (Sab-Dom)</option>
+					<option value="Part time 27hrs">Part time 27hrs</option>
+					<option value="Full 5x2">Full 5x2</option>
+				</select>
+				<select ng-model="sed">
+					<option selected disabled value="">Escojer sede:</option>
+					<!--<option value="Calama">Calama</option>-->
+					<option value="Antofagasta">Antofagasta</option>
+					<option value="Curico">Curico</option>
+					<option value="La Serena">La Serena</option>
+					<option value="Viña del Mar">Viña del Mar</option>
+					<option value="Barnechea">Barnechea</option>
+					<option value="La Florida">La Florida</option>
+					<option value="Santiago Oeste">Santiago Oeste</option>
+					<option value="Santiago Sur">Santiago Sur</option>
+					<option value="Concepción">Concepción</option>
+					<option value="Pto. Montt">Pto. Montt</option>
+				</select>
+				<input type="text" ng-model="nom" placeholder="Nombre">
+				<input type="text" ng-model="ed" placeholder="Fecha de nacimiento">
+				<input type="text" ng-model="em" placeholder="Email">
+				<input type="text" ng-model="tel" placeholder="Teléfono">
+				<textarea rows="5" ng-model="cur" placeholder="Describa sus estudios o cursos"></textarea>
+				<textarea rows="5" ng-model="tra" placeholder="Describa sus trabajos previos y cargos que realizó"></textarea>
+				<textarea rows="5" ng-model="mot" placeholder="¿Qué lo motiva a trabajar con nosotros?"></textarea>
+				<label>Adjuntar CV:</label>
+				<input type="file" name="file" uploader-model="file">
+                <span class="cerrar_formulario" ng-click="trabajos()">enviar</span>
+			</form>
+		</section>
+		<!--API REST BSALE-->
+		<section class="contenedor_formulario_registrate" ng-controller="controlador">
+			<i class="fa fa-times cerrar_problemas"></i>
+			<h1>
+				<img src="img/trabajando.svg">
+				Registrate con nosotros!
+			</h1>
+			<p>
+				Registrate!.
+			</p>
+			<div class="butt">Formulario</div>
+			<br>
+			<br>
+			<div>                   -------------------------                   </div>
+			<div id="form_largo">
+			<form name="registro">
+				<input type="text" ng-model="nombre" placeholder="Nombre">
+				<input type="text" ng-model="apellido" placeholder="Apellido">
+				<select ng-model="ciudad">
+					<option selected disabled value="">Escojer sede</option>  	
+					<option value="Calama">Calama</option>
+					<option value="Antofagasta">Antofagasta</option>
+					<option value="La Serena">La Serena</option>
+					<option value="Curico">Curico</option>
+					<option value="Viña del Mar">Viña del Mar</option>
+					<option value="Barnechea">Barnechea</option>
+					<option value="La Florida">La Florida</option>
+					<option value="Santiago Oeste">Santiago Oeste</option>
+					<option value="Santiago Sur">Santiago Sur</option>
+					<option value="Concepción">Concepción</option>
+					<option value="Pto. Montt">Pto. Montt</option>
+				</select>
+				<input type="text" ng-model="municipalidad" placeholder="Municipalidad">
+				<input type="text" ng-model="direccion" placeholder="Direccion">
+				<input type="text" ng-model="telefono" placeholder="Telefono">
+				<input type="text" ng-model="email" placeholder="Email">
+				<input type="text" ng-model="facebook" placeholder="Facebook">
+				<input type="text" ng-model="twitter" placeholder="Twitter">
+                <span class="cerrar_formulario" ng-click="registrar()">enviar</span>
+			</form>
+			<br>
+			<br>
+			</div>
+			<div id="status" data-max-rows="1" data-show-faces="true">
+			</div>
+			<img id="img" src="">
+			<fb:login-button id='log_face' data-size="large" scope="public_profile,email" onlogin="checkLoginState();">
+			</fb:login-button>
+			<br>
+			<br>
+			<form name="reg_face" id="test" style="display:none">
+			<select ng-model="ciudad" id="sele">
+					<option selected disabled value="">Escojer sede</option>  	
+					<option value="Calama">Calama</option>
+					<option value="Antofagasta">Antofagasta</option>
+					<option value="La Serena">La Serena</option>
+					<option value="Curico">Curico</option>
+					<option value="Viña del Mar">Viña del Mar</option>
+					<option value="Barnechea">Barnechea</option>
+					<option value="La Florida">La Florida</option>
+					<option value="Santiago Oeste">Santiago Oeste</option>
+					<option value="Santiago Sur">Santiago Sur</option>
+					<option value="Concepción">Concepción</option>
+					<option value="Pto. Montt">Pto. Montt</option>
+					
+			</select>
+			<span id="cerrar_form" class="cerrar_formulario">enviar</span>
+			</form>
+		</section>
+	</div>
+	<body class="bg" id="arriba">
+				<!--<a href="http://rallykarting.cl/karting/inicio/login">-->
+				<a href="http://kart-timer.com/drivers/?p=regisztracio">
+					<div class="boton_puntajes">
+						Revisa aquí tus tiempos
+					</div>
+				</a>
+				<!--NAVBAR FIJA-->
+				<header class="container-fluid">
+					<div class="row no_margen">
+						<nav>
+							<span class="btn_menu_main  hidden-lg hidden-md">
+								<i class="fa fa-bars"></i>
+							</span>
+							<ul class="nav_menu_main">
+								<a href="#link_seccion_contacto" class="smooth">
+									<li>
+										contacto<!--BOTON CONTACTO-->
+									</li>
+								</a>
+								<a href="#link_seccion_servicios" class="smooth">
+									<li>
+										servicios<!--BOTON SERVICIOS-->
+									</li>
+								</a>
+								<a href="#link_seccion_nosotros" class="smooth">
+									<li>
+										nosotros<!--BOTON NOSOTROS-->
+									</li>
+								</a>
+
+							</ul>
+						</nav>
+						<figure>
+							<a href="#arriba"><img src="img/logo.png"></a><!--LOGO RALLYKARTING-->
+						</figure>
+						<nav>
+							<ul>
+								<li class="btn_menu_sede">
+									<span class="hidden-xs">Elige tu</span> sede<i class="fa fa-angle-down"></i>
+								</li>
+								<div class="menu_sedes" ng-controller="controlador">
+									<ul>
+										<li ng-init="slidertab == 3">
+											
+											<a href="#antofagasta" ng-click="selectTab(2)">
+												<div ng-class="{ 'activo' : slidertab === 2 }">
+													Antofagasta<i class="fa fa-flag"></i><!--BOTON SEDE ANTOFAGASTA-->
+												</div>
+											</a>
+											<a href="#la_serena" ng-click="selectTab(3)">
+												<div ng-class="{ 'activo' : slidertab === 3 }">
+													La Serena<i class="fa fa-flag"></i><!--BOTON LA SERENA-->
+												</div>
+											</a>
+											<a href="#curico" ng-click="selectTab(11)">
+												<div ng-class="{ 'activo' : slidertab === 11 }">
+													Curico<i class="fa fa-flag"></i><!--BOTON LA SERENA-->
+												</div>
+											</a>
+											<a href="#vina_del_mar" ng-click="selectTab(4)">
+												<div ng-class="{ 'activo' : slidertab === 4 }">
+													Viña del Mar<i class="fa fa-flag"></i><!--BOTON VIÑA DEL MAR-->
+												</div>
+											</a>
+											<a href="#barnechea" ng-click="selectTab(9)">	
+												<div ng-class="{ 'activo' : slidertab === 9 }">
+													Lo Barnechea<i class="fa fa-flag"></i><!--BOTON PTO MONT-->
+												</div>
+											</a>
+											<a href="#laflorida" ng-click="selectTab(10)">	
+												<div ng-class="{ 'activo' : slidertab === 10 }">
+													La Florida<i class="fa fa-flag"></i><!--BOTON PTO MONT-->
+												</div>
+											</a>
+											<a href="#santiagooeste" ng-click="selectTab(6)">	
+												<div ng-class="{ 'activo' : slidertab === 6 }">
+													Santiago Oeste<i class="fa fa-flag"></i><!--BOTON SANTIAGO-->
+												</div>
+											</a>
+											<a href="#santiago" ng-click="selectTab(5)">	
+												<div ng-class="{ 'activo' : slidertab === 5 }">
+													Santiago Sur<i class="fa fa-flag"></i><!--BOTON SANTIAGO-->
+												</div>
+											</a>
+											
+											<a href="#concepcion_centro" ng-click="selectTab(1)">
+												<div ng-class="{ 'activo' : slidertab === 1 }">
+													Concepción centro<i class="fa fa-flag"></i><!--BOTON SEDE CALAMA-->
+												</div>
+											</a>
+											<a href="#concepcion" ng-click="selectTab(7)">	
+												<div ng-class="{ 'activo' : slidertab === 7 }">
+													Concepción trebol<i class="fa fa-flag"></i><!--BOTON CONCEPCION-->
+												</div>
+											</a>
+											<a href="#pto_montt" ng-click="selectTab(8)">	
+												<div ng-class="{ 'activo' : slidertab === 8 }">
+													Puerto Montt<i class="fa fa-flag"></i><!--BOTON PTO MONT-->
+												</div>
+											</a>
+											
+										</li>
+									</ul>
+								</div>
+							</ul>
+						</nav>
+					</div>
+				</header>
+				<br/>
+				<section class="banner_sede"><!--BANNER PRINCIPAL-->
+							<div class="huincha_1">
+								<article>
+									<div class="cnt_tabla">
+										<div class="cnt_vertical"><!--TEXTOS BANNER-->
+											<span>Vive la mejor <span>experiencia</span><img src="img/flecha.svg"></span>
+												<p>
+													Rallykarting
+												</p>
+											<a href="#sede_ir">
+												<aside>
+													<p id="asede">Sede Santiago Sur</p>
+													<span>Recorrer Sede</span>
+												</aside>
+											</a>
+										</div>
+									</div>
+								</article>
+							</div>
+							<div class="huincha_2"><!--IMÁGENES BANNER-->
+								<figure id="cover-calama">
+								</figure>
+								<figure id="cover-antofagasta">
+								</figure>
+							</div>
+							<div class="huincha_3">
+								<figure id="cover-laserena">
+								</figure>
+								<figure id="cover-santiago">
+								</figure>
+								<figure id="cover-vinadelmar">
+								</figure>
+							</div>
+							<div class="huincha_4">
+								<figure id="cover-concepcion">
+								</figure>
+								<figure id="cover-ptomontt">
+								</figure>
+							</div>
+							<div class="huincha_5"></div>
+				</section>
+				<section class="sede" ng-view id="sede_ir"><!--SEDE EN DETALLE-->
+					
+				</section><!--FIN SEDE-->
+				<!--SECCION CONTACTO-->
+				<section class="contacto" ng-controller="controlador" id="link_seccion_contacto">
+					<div class="cnt_contacto">
+						<h1>Contacto</h1>
+						<span>
+							<div class="nav_contacto">
+								<p>Cotizar campeonato:</p>
+								<p>Sugerencias y reclamos:</p>
+								<p>Contacto comercial:</p>
+							</div>
+						</span>
+						<nav><!--BOTONERA CONTACTO-->
+							<ul>
+								<li class="activo form_opcion" id="cotizar_campeonato">
+									<span>Cotizar campeonato</span>
+									<i class="fa fa-car hidden-xs hidden-sm"></i>
+								</li> 
+								<li class="form_opcion" id="sugerencias_reclamos">
+									<span>Sugerencias y reclamos</span>
+									<i class="fa fa-exclamation-triangle hidden-xs hidden-sm"></i>
+								</li>
+								<li class="form_opcion" id="contacto_comercial">
+									<span>Contacto comercial</span>
+									<i class="fa fa-money hidden-xs hidden-sm"></i>
+								</li>
+							</ul>
+						</nav>
+						<form>
+							<input type="text" ng-model="nombre" placeholder="Ingrese su nombre">
+							<input type="text" ng-model="mail" placeholder="Proporcione su email">
+							<input type="phone" ng-model="telefono" placeholder="Su teléfono">
+							<select ng-model="sede">
+								<option selected disabled value="">Escojer sede</option>
+								<option value="1">Calama</option>
+								<option value="2">Antofagasta</option>
+								<option value="3">La Serena</option>
+								<option value="11">Curico</option>
+								<option value="4">Viña del Mar</option>
+								<option value="9">Barnechea</option>
+								<option value="10">La Florida</option>
+								<option value="6">Santiago Oeste</option>
+								<option value="5">Santiago Sur</option>
+								<option value="7">Concepción</option>
+								<option value="8">Pto. Montt</option>
+							</select>
+							<textarea rows="5" ng-model="mensaje" placeholder="Su mensaje..."></textarea>
+                            <span ng-click="enviar()">enviar</span>
+						</form>
+					</div>
+				</section>
+				<!--FIN SECCION CONTACTO-->
+				<section class="servicios" id="link_seccion_servicios"><!--SECCION SERVICIOS-->
+					<h1>Servicios</h1>
+					<p>En RallyKarting ofrecemos los siguientes servicios</p>
+					<div class="cnt_flex">
+						<article><!--SERVICIO #1-->
+							<figure class="icono">
+								<img src="img/telemetria.svg">
+							</figure>
+							<p>Telemetría profesional</p>
+						</article>
+						<article><!--SERVICIO #2-->
+							<figure class="icono">
+								<img src="img/eventos.svg">
+							</figure>
+							<p>Eventos Y</p>
+						</article>
+						<article><!--SERVICIO #3-->
+							<figure class="icono">
+								<img src="img/instructivos.svg">
+							</figure>
+							<p>Instructivos</p>
+						</article>
+						<article><!--SERVICIO #4-->
+							<figure class="icono">
+								<img src="img/calidad.svg">
+							</figure>
+							<p>Calidad y agilidad</p>
+						</article>
+						<article><!--SERVICIO #5-->
+							<figure class="icono">
+								<img src="img/mejora.svg">
+							</figure>
+							<p>Mejora continua</p>
+						</article>
+					</div>
+				</section><!--FIN SECCIÓN SERVICIOS-->
+				<section class="sede" id="link_seccion_nosotros"><!--SEDE NOSOTROS-->
+					<div class="contenedor_sede2">
+						<nav><!--BOTONERA SEDE-->
+							<ul>
+								<li class="activo" id="quienes_somos">Quiénes Somos <i class="fa fa-angle-right"></i></li>
+								<li id="historia">Historia <i class="fa fa-angle-right"></i></li>
+								<li id="mision">Misión <i class="fa fa-angle-right"></i></li>
+							</ul>
+						</nav>
+						<!--INICIO SECCION QUIENES SOMOS-->
+						<article class="seccion_quienes_somos">
+							<div class="lateral_left img_left"
+								style="
+									background: #dd0000 url(img/banner_1.jpg);
+									background-blend-mode: darken;
+									background-size: cover;
+									background-position: center;
+									-webkit-filter: blur(1);
+									-moz-filter: blur(1);
+									-o-filter: blur(1);
+									-ms-filter: blur(1);
+									filter: blur(1);
+								"
+							><!--IMAGEN QUIENES SOMOS-->
+								<figure>
+									<img src="img/banner_1.jpg"><!--IMAGEN-->	
+								</figure>
+							</div>
+							<div class="lateral_right"><!--INDICACIONES MAPA-->
+								<div class="indicaciones">
+									<p>Quiénes somos</p>
+									<span>
+										Somos un grupo humano dedicados a entregar a nuestros clientes un momento de diversión para toda la familia en nuestras diversas pistas ubicadas en distintos puntos del país. Rallykarting es la opción mas segura y económica de vivir una experiencia inolvidable como piloto de carreras.
+									</span>
+								</div>
+							</div>
+						</article>
+						<!--FIN SECCION QUIENES SOMOS-->
+						<!--INICIO SECCION HISTORIA-->
+						<article class="seccion_historia">
+							<div class="lateral_left img_left"
+								style="
+									background: #dd0000 url(img/banner_2.jpg);
+									background-blend-mode: darken;
+									background-size: cover;
+									background-position: center;
+									-webkit-filter: blur(1);
+									-moz-filter: blur(1);
+									-o-filter: blur(1);
+									-ms-filter: blur(1);
+									filter: blur(1);
+								"
+									><!--IMAGEN HISTORIA-->
+								<figure>
+									<img src="img/banner_2.jpg"><!--HISTORIA-->	
+								</figure>
+							</div>
+							<div class="lateral_right">
+								<div class="noticias">
+									<!--ENUNCIADO-->
+									<p>Historia</p>
+									<span>		
+										Todo parte el 2006 con la idea de que todos puedan correr en un auto de carreras con sus amigos por pocas lucas. En el 2009 se empieza a tramitar la adquisición de las primeras 5 máquinas, en el 2010 desembarcan en Chile maquinas diseñadas en USA y ensambladas en China, en el 2011 se venden esas máquinas y se adquieren 13 máquinas alemanas de las mismas que tiene Michael Schumacher en su pista de karting en Kerpen – Sindorf Alemania, el 2012 se suman 15 máquinas equivalentes a la flota pasando a ofrecerte 4 pistas de karting alrededor de chile siendo así la empresa con mas pistas de karting del país. Y la historia la seguiremos escribiendo para darte mas opciones de correr con tus amigos por poco dinero.
+									</span>
+									<!--FIN ENUNCIADO-->
+								</div>
+							</div>
+						</article>
+						<!--FIN SECCION HISTORIA-->
+						<!--INICIO SECCION MISION-->
+						<article class="seccion_mision">
+							<div class="lateral_left img_left"
+								style="
+									background: #dd0000 url(img/banner_6.jpg);
+									background-blend-mode: darken;
+									background-size: cover;
+									background-position: center;
+									-webkit-filter: blur(1);
+									-moz-filter: blur(1);
+									-o-filter: blur(1);
+									-ms-filter: blur(1);
+									filter: blur(1);
+								"
+									><!--IMAGEN MISION-->
+								<figure>
+									<img src="img/banner_3.jpg"><!--MISION-->	
+								</figure>
+							</div>
+							<div class="lateral_right">
+								<div class="noticias">
+									<!--ENUNCIADO-->
+									<p>Misión</p>
+									<span>
+										Es una empresa dedicada al entretenimiento de grandes y chicos, nuestro principal objetivo es entregar entretención para toda la familia en un entorno seguro y controlado para entregar un grato momento de diversión en familia así como también con los amigos, para ello contamos con maquinas de muy alta calidad, complementado con un estricto protocolo de seguridad Rally karting con sus sedes a lo largo del país son un fiel reflejo de como el esfuerzo, la responsabilidad, rigurosidad, pro actividad, solidaridad , compañerismo y flexibilidad , siempre atentos a lo que necesité tanto sus clientes como sus propios colegas todos estos valores que caracterizan y son propias de uno y cada uno de los miembros de nuestro equipo lo que nos a permitido en los años de existencia garantizar una optima calidad de servicio lo que nos a valido la amistad y fidelidad de nuestros clientes gracias a los cuales hemos podido seguir creciendo y con ello llevando entretención a mas ciudades , entreteniendo a mas personas , transformando cada día y cada tarde en una fiesta en torno a la pasión que nos mueve la vocación de servir y el amor por el karting, actividad que definimos como sana divertida y lo mas importante muy segura para quien quiera pisar el acelerador a fondo
+									</span>
+									<!--FIN ENUNCIADO-->
+								</div>
+							</div>
+						</article>
+					</div>
+					<a href="#arriba">
+						<div class="top">
+							<i class="fa fa-angle-double-up"></i>
+						</div>
+					</a>
+				</section><!--FIN NOSOTROS-->
+				<footer>
+					<img src="img/logo.png">
+				</footer>
+	<script src="js/bootstrap.min.js"></script><!--BOOTSTRAP JS-->
+	<script src="js/scripts.js" type="text/javascript"></script><!--SCRIPTS PERSONALIZADOS-->
+	<script>
+	$(document).on('ready', function(){
+		$('#form_largo').attr('style','display:none');
+		//$('#form_largo').slidetoggle(300)
+	})
+	$(document).on('click','.butt',function(){
+		//$('#form_largo').attr('style','display:block');
+		$('#form_largo').slideToggle(300)
+	})
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+   	  $('#log_face').attr('style','display:none')
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Login  ' +
+        'con Facebook.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Login  ' +
+        'con Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '349514068717252',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.5' // use graph api version 2.5
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+
+
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  var datos = '';
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me',{fields: 'name, email,first_name,last_name,link,picture' } , function(response) {
+      //console.log('Successful login for: ' + response.name);
+      //console.log('Successful login for: ' + response.picture.data['url']);
+      //console.log('email: '+ response.email);
+      document.getElementById('status').innerHTML =
+        'Bienvenido, ' + response.name + '!';
+	  $('#img').attr('src',""+response.picture.data['url']+"")
+	  //console.log(JSON.stringify(response));
+	  alert('Estimado usuario, para completar su registro favor ingrese una sede!!')
+	  $('#test').slideToggle(300)
+	  datos = JSON.stringify(response)
+
+	  //id
+	  //name
+	  //email
+    });
+  }
+  $(document).on('click','#cerrar_form',function(){
+
+	  	if($('#sele').val() != null){
+	  	console.log($('#sele').val())
+            $.ajax({
+			  type: "POST",
+			  url: 'registro.php',
+			  data: {'datos': datos,'sede':$('#sele').val()},
+			  success: function(){
+			  	alert('ok');
+			  },
+			  dataType: 'Json'
+			});
+	  }
+	  })
+</script>
+	</body>
+</html>

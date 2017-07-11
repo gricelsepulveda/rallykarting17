@@ -1,0 +1,93 @@
+<div class="login-usuario">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="text-align:center">
+                <br>
+                <img src="<?php echo base_url();?>assets/img/titulo-ranking.png" class="titulo">
+                <div class="cuadro-ranking">
+                    <?php for ($i=0; $i < sizeof($ranking); $i++) {
+                    $detalle = $this->usuarios_model->detalle_ranking($ranking[$i]->id_usuario);
+                    ?>
+                        <div class="listado-ranking">
+                            <p class="posicion"><strong><?php echo $i+1; ?></strong></p>
+                            <img src="<?php echo base_url();?>assets/img/icon-user-1.png" class="avatar">
+                            <p class="nombre"><strong><?php echo $this->usuarios_model->nombre($ranking[$i]->id_usuario) ?></strong></p>
+
+                            <div class="cont-resultado scroller">
+                                <?php for ($j=0; $j < sizeof($detalle); $j++) { ?>
+                                    <div class="resultado">
+                                        <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $actual_link; ?>" target="_blank">
+                                            <img src="<?php echo base_url();?>assets/img/fb.png" class="fb">
+                                        </a>
+                                        <p>Mejor Tiempo <strong><?php echo $detalle[$j]->mejor_tiempo; ?></strong></p>
+                                        <p>Total Vueltas <strong><?php echo $detalle[$j]->total_vueltas; ?></strong></p>
+                                        <p>Tiempo Total <strong><?php echo $detalle[$j]->tiempo_total; ?></strong></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    <?php } ?>
+
+                    <br>
+
+                    <?php
+                    $posicion   =   $this->ranking_model->posicion($me_id);
+
+                    if(isset($in_top) && $in_top == false && !empty($posicion)) {
+                        $detalle    =   $this->usuarios_model->detalle_ranking($me_id);
+                    ?>
+                        <div class="listado-ranking">
+                            <p class="posicion"><strong><?php echo $posicion ?></strong></p>
+                            <img src="<?php echo base_url();?>assets/img/icon-user-1.png" class="avatar">
+                            <p class="nombre"><strong><?php echo $this->usuarios_model->nombre($me_id); ?></strong></p>
+                            <div class="cont-resultado scroller">
+                                <?php for ($j=0; $j < sizeof($detalle); $j++) { ?>
+                                    <div class="resultado">
+                                        <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $actual_link; ?>" target="_blank">
+                                            <img src="<?php echo base_url();?>assets/img/fb.png" class="fb">
+                                        </a>
+                                        <p>Mejor Tiempo <strong><?php echo $detalle[$j]->mejor_tiempo; ?></strong></p>
+                                        <p>Total Vueltas <strong><?php echo $detalle[$j]->total_vueltas; ?></strong></p>
+                                        <p>Tiempo Total <strong><?php echo $detalle[$j]->tiempo_total; ?></strong></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="firma">
+    <p>by youtouch</p>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.simplyscroll.js"></script>
+    <script type="text/javascript">
+    (function($) {
+
+        $(function() { //on DOM ready
+            $(".scroller").simplyScroll({
+                auto: false,
+                speed: 5
+            });
+
+            $(".resultado").mouseover(function(){
+                $(this).find('.fb').css("display","block");
+            })
+
+            $(".resultado").mouseleave(function(){
+                $(this).find('.fb').css("display","none");
+            })
+        });
+    })(jQuery);
+    </script>
+    </body>
+</html>
